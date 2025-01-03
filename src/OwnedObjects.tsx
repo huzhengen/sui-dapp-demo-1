@@ -34,14 +34,14 @@ export function OwnedObjects() {
         <table className="w-full">
           <thead className="bg-muted/50">
             <tr className="border-b transition-colors">
-              <th className="h-12 px-4 text-left align-middle font-medium text-muted-foreground">Name</th>
+              <th className="h-12 px-4 text-left align-middle font-medium text-muted-foreground">ID</th>
               <th className="h-12 px-4 text-left align-middle font-medium text-muted-foreground">Object ID</th>
             </tr>
           </thead>
           <tbody>
             {data.data.map((object, index) => (
-              <tr className="border-b transition-colors hover:bg-muted/50" key={index}>
-                <td className="p-4 align-middle">{index}</td>
+              <tr className="border-b transition-colors hover:bg-muted/50" key={index + 1}>
+                <td className="p-4 align-middle">{index + 1}</td>
                 <td className="p-4 align-middle">{object.data?.objectId}</td>
               </tr>
             ))}
