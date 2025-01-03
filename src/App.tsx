@@ -1,8 +1,23 @@
 import { ConnectButton } from "@mysten/dapp-kit";
 import { WalletStatus } from "./WalletStatus";
 import { Button } from "@/components/ui/button";
+import { useEffect, useState } from "react";
+import { queryState } from "@/lib/contracts";
+import { State } from "./type";
 
 function App() {
+  const [state, setState] = useState<State | null>(null);
+
+  const fetchState = async () => {
+    const state = await queryState();
+    console.log(state);
+    // setState(state);
+  };
+
+  useEffect(() => {
+    fetchState();
+  }, []);
+
   return (
     <>
       <header className="border-b">
