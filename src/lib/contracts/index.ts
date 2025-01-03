@@ -1,5 +1,6 @@
 import { networkConfig, suiClient } from "@/networkConfig";
 import { State, User } from "@/type";
+import { Transaction } from "@mysten/sui/transactions";
 
 export const queryStateByEvents = async () => {
   const events = await suiClient.queryEvents({
@@ -26,4 +27,21 @@ export const queryState = async () => {
     },
   });
   return state;
+};
+
+export const createProfile = async (name:string,description:string) => {
+ const tx = new Transaction()
+
+ tx.moveCall({
+  package:networkConfig.testnet.packageID,
+  module:'week_one_alt',
+  function:`create_profile`,
+  arguments:[
+    tx.pure.string(name),
+    tx.pure.string(description),
+    tx.object(networkConfig.testnet.state),
+  ],
+ })
+
+ return tx
 };

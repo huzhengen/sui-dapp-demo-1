@@ -1,4 +1,4 @@
-module admin::week1;
+module week1::week1;
 
 use std::string::String;
 use sui::event;

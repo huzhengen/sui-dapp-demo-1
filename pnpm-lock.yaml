@@ -6,11 +6,11 @@ settings:
 
 dependencies:
   '@mysten/dapp-kit':
-    specifier: 0.14.30
-    version: 0.14.30(@tanstack/react-query@5.62.11)(@types/react-dom@18.3.5)(@types/react@18.3.18)(react-dom@18.3.1)(react@18.3.1)(typescript@5.7.2)
+    specifier: 0.14.44
+    version: 0.14.44(@tanstack/react-query@5.62.11)(@types/react-dom@18.3.5)(@types/react@18.3.18)(react-dom@18.3.1)(react@18.3.1)(typescript@5.7.2)
   '@mysten/sui':
-    specifier: 1.14.2
-    version: 1.14.2(typescript@5.7.2)
+    specifier: 1.18.0
+    version: 1.18.0(typescript@5.7.2)
   '@radix-ui/colors':
     specifier: ^3.0.0
     version: 3.0.0
@@ -539,21 +539,21 @@ packages:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.0
 
-  /@mysten/bcs@1.1.0:
-    resolution: {integrity: sha512-yy9/1Y4d0FlRywS1+9ze/T7refCbrvwFwJIOKs9M3QBK1njbcHZp+LkVeLqBvIJA5eZ3ZCzmhQ1Xq4Sed5mEBA==}
+  /@mysten/bcs@1.2.0:
+    resolution: {integrity: sha512-LuKonrGdGW7dq/EM6U2L9/as7dFwnhZnsnINzB/vu08Xfrj0qzWwpLOiXagAa5yZOPLK7anRZydMonczFkUPzA==}
     dependencies:
       bs58: 6.0.0
     dev: false
 
-  /@mysten/dapp-kit@0.14.30(@tanstack/react-query@5.62.11)(@types/react-dom@18.3.5)(@types/react@18.3.18)(react-dom@18.3.1)(react@18.3.1)(typescript@5.7.2):
-    resolution: {integrity: sha512-JWtZ3qgmaRqQjXhlXt9ILJmdstrIORVvxQ/cvcyWa/z3Svhw/2lYTs8FowuKZUWvboNfCKz+siaybxfv2n0sbg==}
+  /@mysten/dapp-kit@0.14.44(@tanstack/react-query@5.62.11)(@types/react-dom@18.3.5)(@types/react@18.3.18)(react-dom@18.3.1)(react@18.3.1)(typescript@5.7.2):
+    resolution: {integrity: sha512-5b9Xr5TKQEX/jyYC+RIknAw8g6gmz1su0u1FIYCjek+5mU5dQvO0PIp88bwfjxgCyswtCgSHP/atxiiK1mextQ==}
     peerDependencies:
       '@tanstack/react-query': ^5.0.0
       react: '*'
     dependencies:
-      '@mysten/sui': 1.14.2(typescript@5.7.2)
-      '@mysten/wallet-standard': 0.13.11(typescript@5.7.2)
-      '@mysten/zksend': 0.11.11(typescript@5.7.2)
+      '@mysten/sui': 1.18.0(typescript@5.7.2)
+      '@mysten/wallet-standard': 0.13.20(typescript@5.7.2)
+      '@mysten/zksend': 0.12.10(typescript@5.7.2)
       '@radix-ui/react-dialog': 1.1.4(@types/react-dom@18.3.5)(@types/react@18.3.18)(react-dom@18.3.1)(react@18.3.1)
       '@radix-ui/react-dropdown-menu': 2.1.4(@types/react-dom@18.3.5)(@types/react@18.3.18)(react-dom@18.3.1)(react@18.3.1)
       '@radix-ui/react-slot': 1.1.1(@types/react@18.3.18)(react@18.3.1)
@@ -575,21 +575,23 @@ packages:
       - typescript
     dev: false
 
-  /@mysten/sui@1.14.2(typescript@5.7.2):
-    resolution: {integrity: sha512-WkkVLoP9SXhcZYh/yqtXaM8zX8KPdCTfMUY9oNjHBIFBN3K0s6M5mFRPekZdG8+PVGyRLZI1mFQOs7cRyx4xKg==}
+  /@mysten/sui@1.18.0(typescript@5.7.2):
+    resolution: {integrity: sha512-cFh5LxXZrXb/ZAD1dkKeQxzhgRYFXreyFGmI7w/JQWwdl+/0FrHJBwaWyTmGxJ/6ZC9SlaOPOk63flN7DbUurg==}
     engines: {node: '>=18'}
     dependencies:
       '@graphql-typed-document-node/core': 3.2.0(graphql@16.10.0)
-      '@mysten/bcs': 1.1.0
+      '@mysten/bcs': 1.2.0
       '@noble/curves': 1.7.0
       '@noble/hashes': 1.6.1
       '@scure/bip32': 1.6.0
       '@scure/bip39': 1.5.0
+      '@simplewebauthn/typescript-types': 7.4.0
       '@suchipi/femver': 1.0.0
       bech32: 2.0.0
       gql.tada: 1.8.10(graphql@16.10.0)(typescript@5.7.2)
       graphql: 16.10.0
-      tweetnacl: 1.0.3
+      jose: 5.9.6
+      poseidon-lite: 0.2.1
       valibot: 0.36.0
     transitivePeerDependencies:
       - '@gql.tada/svelte-support'
@@ -597,10 +599,10 @@ packages:
       - typescript
     dev: false
 
-  /@mysten/wallet-standard@0.13.11(typescript@5.7.2):
-    resolution: {integrity: sha512-zOYrR7weNN+u+slzZypo9onkb+JswPk8qWg482FcMtwXKNu9Bd9adjAWD0pehGYRNDSYWwTVwyql9mDwy8YwdQ==}
+  /@mysten/wallet-standard@0.13.20(typescript@5.7.2):
+    resolution: {integrity: sha512-k9nDnZ/ZkCr4wFRxiP984k/T2ZUfwd/+RfYnwbMHv6MW91no2VKb53fVxbkhqc39qGKAvrXeMonNrm37Iz0JFw==}
     dependencies:
-      '@mysten/sui': 1.14.2(typescript@5.7.2)
+      '@mysten/sui': 1.18.0(typescript@5.7.2)
       '@wallet-standard/core': 1.0.3
     transitivePeerDependencies:
       - '@gql.tada/svelte-support'
@@ -608,11 +610,11 @@ packages:
       - typescript
     dev: false
 
-  /@mysten/zksend@0.11.11(typescript@5.7.2):
-    resolution: {integrity: sha512-yVvXOQaFQdNx4t5Pmm++aijQ3ilCWd1W1ptVy2sc9olGhOyY6bqXThFZOIMENdIxYPLejviVQw/E+52CB7JHhw==}
+  /@mysten/zksend@0.12.10(typescript@5.7.2):
+    resolution: {integrity: sha512-qMbmRKnKV+AnLaKveJN8itAOMHa2pqfw3IkO3sLTlt42T5qQE0BXj9cKHMLv+F7w+k5+CBDL/0R7Xdb17hSRzw==}
     dependencies:
-      '@mysten/sui': 1.14.2(typescript@5.7.2)
-      '@mysten/wallet-standard': 0.13.11(typescript@5.7.2)
+      '@mysten/sui': 1.18.0(typescript@5.7.2)
+      '@mysten/wallet-standard': 0.13.20(typescript@5.7.2)
       mitt: 3.0.1
       nanostores: 0.10.3
       valibot: 0.36.0
@@ -1935,6 +1937,11 @@ packages:
       '@scure/base': 1.2.1
     dev: false
 
+  /@simplewebauthn/typescript-types@7.4.0:
+    resolution: {integrity: sha512-8/ZjHeUPe210Bt5oyaOIGx4h8lHdsQs19BiOT44gi/jBEgK7uBGA0Fy7NRsyh777al3m6WM0mBf0UR7xd4R7WQ==}
+    deprecated: This package has been renamed to @simplewebauthn/types. Please install @simplewebauthn/types instead to ensure you receive future updates.
+    dev: false
+
   /@suchipi/femver@1.0.0:
     resolution: {integrity: sha512-bprE8+K5V+DPX7q2e2K57ImqNBdfGHDIWaGI5xHxZoxbKOuQZn4wzPiUxOAHnsUr3w3xHrWXwN7gnG/iIuEMIg==}
     dev: false
@@ -2992,6 +2999,10 @@ packages:
     resolution: {integrity: sha512-/imKNG4EbWNrVjoNC/1H5/9GFy+tqjGBHCaSsN+P2RnPqjsLmv6UD3Ej+Kj8nBWaRAwyk7kK5ZUc+OEatnTR3A==}
     hasBin: true
 
+  /jose@5.9.6:
+    resolution: {integrity: sha512-AMlnetc9+CV9asI19zHmrgS/WYsWUwCn2R7RzlbJWD7F9eWYUTGyBmU9o6PxngtLGOiDGPRu+Uc4fhKzbpteZQ==}
+    dev: false
+
   /js-tokens@4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
     dev: false
@@ -3226,6 +3237,10 @@ packages:
   /pirates@4.0.6:
     resolution: {integrity: sha512-saLsH7WeYYPiD25LDuLRRY/i+6HaPYr6G1OUlN39otzkSTxKnubR9RTxS3/Kk50s1g2JTgFwWQDQyplC5/SHZg==}
     engines: {node: '>= 6'}
+
+  /poseidon-lite@0.2.1:
+    resolution: {integrity: sha512-xIr+G6HeYfOhCuswdqcFpSX47SPhm0EpisWJ6h7fHlWwaVIvH3dLnejpatrtw6Xc6HaLrpq05y7VRfvDmDGIog==}
+    dev: false
 
   /postcss-import@15.1.0(postcss@8.4.49):
     resolution: {integrity: sha512-hpr+J05B2FVYUAXHeK1YyI267J/dDDhMU6B6civm8hSY1jYJnBXxzKDKDswzJmtLHryrjhnDjqqp/49t8FALew==}
@@ -3609,10 +3624,6 @@ packages:
 
   /tslib@2.8.1:
     resolution: {integrity: sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==}
-    dev: false
-
-  /tweetnacl@1.0.3:
-    resolution: {integrity: sha512-6rt+RN7aOi1nGMyC4Xa5DdYiukl2UWCbcJft7YhxReBGQD7OAM8Pbxw6YMo4r2diNEA8FEmu32YOn9rhaiE5yw==}
     dev: false
 
   /type-check@0.4.0:
