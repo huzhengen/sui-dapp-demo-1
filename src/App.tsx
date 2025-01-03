@@ -1,6 +1,7 @@
 import { ConnectButton } from "@mysten/dapp-kit";
 import { Box, Container, Flex, Heading } from "@radix-ui/themes";
 import { WalletStatus } from "./WalletStatus";
+import { Button } from "@/components/ui/button";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         </Box>
       </Flex>
       <Container>
+        <Button variant="secondary">Click me</Button>
         <Container
           mt="5"
           pt="2"
