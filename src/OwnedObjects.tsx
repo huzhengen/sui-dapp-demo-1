@@ -25,8 +25,6 @@ export function OwnedObjects() {
   if (isPending || !data) {
     return <Flex>Loading...</Flex>;
   }
-  console.log('objects', data.data);
-
 
   return (
     <div className="container mx-auto px-4 py-8">

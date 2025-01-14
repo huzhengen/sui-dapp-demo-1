@@ -1,17 +1,14 @@
 import { useState } from "react";
 import { Button } from "./components/ui/button";
-import { queryState, queryStateByEvents, createProfile, } from "@/lib/contracts";
+import { queryState, createProfile, } from "@/lib/contracts";
 import { ConnectButton, useSignAndExecuteTransaction, useCurrentAccount } from "@mysten/dapp-kit";
 import { State } from "./type/index"
 import type { WalletAccount } from '@mysten/wallet-standard';
 
-
-
-export function CreateProfile({ currentAccount, state }: { currentAccount: WalletAccount | null, state: State | null }) {
+export function CreateProfile({ currentUser, state }: { currentUser: WalletAccount | null, state: State | null }) {
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
   const { mutate: signAndExecute } = useSignAndExecuteTransaction()
-
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -29,7 +26,7 @@ export function CreateProfile({ currentAccount, state }: { currentAccount: Walle
     })
   }
 
-  if (!currentAccount) {
+  if (!currentUser) {
     return <div>Connect your wallet to create a profile</div>
   }
 

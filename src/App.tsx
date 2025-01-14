@@ -1,58 +1,30 @@
-import { ConnectButton, useSignAndExecuteTransaction, useCurrentAccount, } from "@mysten/dapp-kit";
-import { WalletStatus } from "./WalletStatus";
-import { Button } from "@/components/ui/button";
-import { useEffect, useState } from "react";
-import { queryState, queryStateByEvents, createProfile, } from "@/lib/contracts";
-import { State } from "./type";
-import { CreateProfile } from "./CreateProfile";
-
+import { ConnectButton } from "@mysten/dapp-kit";
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import Main from "./pages/Main";
+import User from "./pages/User";
+// import NaviBar from "./components/navi-bar";
 
 function App() {
- 
-  const [state, setState] = useState<State | null>(null)
-  const [hasProfile, setHasProFile] = useState(false)
-  const { mutate: signAndExecute } = useSignAndExecuteTransaction()
-  const currentAccount = useCurrentAccount()
-
-  const fetchState = async () => {
-    const state = await queryStateByEvents();
-    console.log(state, currentAccount);
-    setState(state);
-    if (state.users.find(user => user.owner === currentAccount?.address)) {
-      console.log('user found');
-      setHasProFile(true)
-    }
-  };
-
-  useEffect(() => {
-    if (currentAccount) {
-      fetchState();
-    }
-  }, [currentAccount]);
-
   return (
-    <>
-      <header className="border-b">
-        <div className="container mx-auto px-4">
-          <div className="flex h-16 items-center justify-between">
-            <div className="font-bold text-xl">Logo</div>
-            <ConnectButton />
+    <Router>
+      <div className="bg-background">
+        <header className="border-b">
+          <div className="container mx-auto px-4">
+            <div className="flex h-16 items-center justify-between">
+              <div className="flex items-center font-bold text-xl">
+                <h1>Logo</h1>
+                <div className="text-base pl-4"><Link to="/">Home</Link></div>
+              </div>
+              <ConnectButton />
+            </div>
           </div>
-        </div>
-      </header>
-      {currentAccount && hasProfile
-        ?
-        <div className="container mx-auto">
-          <WalletStatus />
-        </div>
-        :
-        <main className="container mx-auto px-4 py-8">
-          <CreateProfile currentAccount={currentAccount} state={state} />
-        </main>
-      }
-
-
-    </>
+        </header>
+        <Routes>
+          <Route path="/" element={<Main />} />
+          <Route path="/user" element={<User />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
