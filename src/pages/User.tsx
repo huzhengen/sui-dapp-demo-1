@@ -2,7 +2,7 @@ import FolderCard from "@/components/FolderCard";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { addCoinToFolderTx, createFolderTx, queryFolderDataByGraphQL } from "@/lib/contracts";
+import { addCoinToFolderTx, addNftToFolderTx, createFolderTx, queryFolderDataByGraphQL } from "@/lib/contracts";
 import { DisplayProfile, Folder, FolderData, SuiObject } from "@/type";
 import { useSignAndExecuteTransaction } from "@mysten/dapp-kit";
 import { useState } from "react";
@@ -31,20 +31,32 @@ const User = () => {
     const folderData = await queryFolderDataByGraphQL(folder.id.id);
     setFolderData(folderData);
   }
-  const handleAddToFolder = async (asset: SuiObject) => {
+  const handleAddToFolder = async (asset: SuiObject, assetType: string) => {
     if (!selectedFolder) {
       console.log("No folder selected");
       return;
     };
-    const coinAmount = amount * 10 ** (asset.coinMetadata?.decimals || 0);
-    const tx = await addCoinToFolderTx(selectedFolder.id.id, asset.id, asset.type, coinAmount);
-    await signAndExecuteTransaction({
-      transaction: tx,
-    }, {
-      onSuccess: () => {
-        console.log("Asset added to folder successfully");
-      }
-    });
+    if (assetType === 'Coin') {
+      const coinAmount = amount * 10 ** (asset.coinMetadata?.decimals || 0);
+      const tx = await addCoinToFolderTx(selectedFolder.id.id, asset.id, asset.type, coinAmount);
+      await signAndExecuteTransaction({
+        transaction: tx,
+      }, {
+        onSuccess: () => {
+          console.log("Coin added to folder successfully");
+        }
+      });
+    } else if (assetType === 'NFT') {
+      const nftAmount = amount;
+      const tx = await addNftToFolderTx(selectedFolder.id.id, asset.id, asset.type, nftAmount);
+      await signAndExecuteTransaction({
+        transaction: tx,
+      }, {
+        onSuccess: () => {
+          console.log("NFT added to folder successfully");
+        }
+      });
+    }
   }
   return (
     <div className="w-full p-4">
@@ -80,7 +92,7 @@ const User = () => {
                             value={amount}
                             onChange={(e) => setAmount(Number(e.target.value))}
                           />
-                          <Button onClick={() => handleAddToFolder(asset)}>Add to folder</Button>
+                          <Button onClick={() => handleAddToFolder(asset, assetType)}>Add to folder</Button>
                         </div>
                       </div>
                     ))}

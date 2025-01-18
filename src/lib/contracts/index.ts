@@ -233,3 +233,18 @@ export const addCoinToFolderTx = async (folder: string, coin: string, coin_type:
   return tx;
 }
 
+export const addNftToFolderTx = async (folder: string, nft: string, nft_type: string, amount: number) => {
+  const tx = new Transaction();
+  const [depositCoin] = tx.splitCoins(tx.object(nft), [tx.pure.u64(amount)]);
+  tx.moveCall({
+    package: networkConfig.testnet.packageID,
+    module: "week_two",
+    function: "add_nft_to_folder",
+    arguments: [
+      tx.object(folder),
+      tx.object(depositCoin)
+    ],
+    typeArguments: [nft_type]
+  })
+  return tx;
+}
