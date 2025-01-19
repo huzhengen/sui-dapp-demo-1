@@ -54,7 +54,10 @@ const User = () => {
       }, {
         onSuccess: () => {
           console.log("NFT added to folder successfully");
-        }
+        },
+        onError(error, variables, context) {
+          console.log('add nft error', error)
+        },
       });
     }
   }

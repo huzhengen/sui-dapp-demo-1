@@ -30,9 +30,9 @@ export function CreateProfile({ currentUser, state }: { currentUser: WalletAccou
     return <div>Connect your wallet to create a profile</div>
   }
 
-  if (!state) {
-    return <div>Loading...</div>
-  }
+  // if (!state) {
+  //   return <div>Loading...</div>
+  // }
 
   return (
     <div className="max-w-md mx-auto">

@@ -8,7 +8,7 @@ import queryFolderDataContext from "./graphContext";
 export const queryState: () => Promise<State> = async () => {
   const events = await suiClient.queryEvents({
     query: {
-      MoveEventType: `${networkConfig.testnet.packageID}::week_two::ProfileCreated`
+      MoveEventType: `${networkConfig.testnet.packageID}::${networkConfig.testnet.module}::ProfileCreated`
     }
   })
   const state: State = {
@@ -26,7 +26,7 @@ export const createProfile = async (name: string, description: string) => {
 
   tx.moveCall({
     package: networkConfig.testnet.packageID,
-    module: 'week_two',
+    module: networkConfig.testnet.module,
     function: `create_profile`,
     arguments: [
       tx.pure.string(name),
@@ -185,7 +185,7 @@ export const createProfileTx = async (name: string, description: string) => {
   const tx = new Transaction();
   tx.moveCall({
     package: networkConfig.testnet.packageID,
-    module: "week_two",
+    module: networkConfig.testnet.module,
     function: "create_profile",
     arguments: [
       tx.pure.string(name),
@@ -203,7 +203,7 @@ export const createFolderTx = async (name: string, description: string, profile:
   const tx = new Transaction();
   tx.moveCall({
     package: networkConfig.testnet.packageID,
-    module: "week_two",
+    module: networkConfig.testnet.module,
     function: "create_folder",
     arguments: [
       tx.pure.string(name),
@@ -222,7 +222,8 @@ export const addCoinToFolderTx = async (folder: string, coin: string, coin_type:
   const [depositCoin] = tx.splitCoins(tx.object(coin), [tx.pure.u64(amount)]);
   tx.moveCall({
     package: networkConfig.testnet.packageID,
-    module: "week_two",
+    // module: networkConfig.testnet.module,
+    module: "week3", // week_two
     function: "add_coin_to_folder",
     arguments: [
       tx.object(folder),
@@ -235,14 +236,14 @@ export const addCoinToFolderTx = async (folder: string, coin: string, coin_type:
 
 export const addNftToFolderTx = async (folder: string, nft: string, nft_type: string, amount: number) => {
   const tx = new Transaction();
-  const [depositCoin] = tx.splitCoins(tx.object(nft), [tx.pure.u64(amount)]);
   tx.moveCall({
     package: networkConfig.testnet.packageID,
-    module: "week_two",
+    // module: networkConfig.testnet.module,
+    module: "week3",
     function: "add_nft_to_folder",
     arguments: [
       tx.object(folder),
-      tx.object(depositCoin)
+      tx.object(nft)
     ],
     typeArguments: [nft_type]
   })

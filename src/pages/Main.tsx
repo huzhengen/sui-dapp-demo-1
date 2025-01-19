@@ -42,8 +42,6 @@ function Main() {
         );
         processedObjects.Coin = updatedCoins;
       }
-      console.log('processedObjects-1', processedObjects);
-
 
       setState(state);
       setDisplayProfile({
@@ -66,6 +64,7 @@ function Main() {
       fetchState();
     }
   }, [currentUser]);
+
 
   return (
     <div className="min-h-screen bg-background">
